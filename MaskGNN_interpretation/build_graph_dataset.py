@@ -12,7 +12,6 @@ task = args.task_name
 input_csv = '../data/origin_data/' + task + '.csv'
 output_g_path = '../data/graph_data/' + task + '.bin'
 output_g_group_path = '../data/graph_data/' + task + '_group.csv'
-
 output_g_for_brics_path = '../data/graph_data/' + task + '_for_brics.bin'
 output_g_group_for_brics_path = '../data/graph_data/' + task + '_group_for_brics.csv'
 output_g_smask_for_brics_path = '../data/graph_data/' + task + '_smask_for_brics.npy'

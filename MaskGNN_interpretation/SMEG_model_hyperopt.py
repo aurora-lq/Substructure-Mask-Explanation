@@ -9,7 +9,7 @@ from maskgnn import collate_molgraphs, EarlyStopping, run_a_train_epoch, \
 from hyperopt import fmin, tpe, hp, STATUS_OK, Trials
 import pickle as pkl
 import time
-
+import os
 
 # fix parameters of model
 def SMEG_hyperopt(times, task_name, max_evals=30, classification=False):
@@ -160,6 +160,9 @@ def SMEG_hyperopt(times, task_name, max_evals=30, classification=False):
         val_score = run_an_eval_epoch(args, model, val_loader, loss_criterion, out_path=None)[0][0]
         test_score = run_an_eval_epoch(args, model, test_loader, loss_criterion, out_path=None)[0][0]
         pred_name = 'mol_{}'.format(time_id + 1)
+        out_path = '../prediction/mol/'
+        if not os.path.exists(out_path):
+            os.makedirs(out_path)
         stop_test_list, _ = run_an_eval_epoch(args, model, test_loader, loss_criterion,
                                                out_path='../prediction/mol/' + args['task_name'] + '_' + pred_name + '_test')
         stop_train_list, _ = run_an_eval_epoch(args, model, train_loader, loss_criterion,
